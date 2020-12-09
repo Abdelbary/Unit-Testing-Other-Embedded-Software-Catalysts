@@ -9,9 +9,11 @@
 #ifndef MK20DX256_H
 #define MK20DX256_H
 
+
 //Convenience definitions for creating register sets
 #define REGISTER volatile unsigned int
 #define BIT_TO_MASK(a) (1u << (a))
+
 
 #ifdef TEST
 #define INSTANCE(name, address, template) PORT_##address; template PORT_##address;

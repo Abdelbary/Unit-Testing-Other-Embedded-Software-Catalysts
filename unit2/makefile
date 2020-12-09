@@ -60,7 +60,7 @@ clean:
 	$(CLEANUP) $(TGT)
 
 $(PATHB):
-	$(MKDIR) $(PATHB)
+	$(MKDIR) build
 
 all: clean test
 

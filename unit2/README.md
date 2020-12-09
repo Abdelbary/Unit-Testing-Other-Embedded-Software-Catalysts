@@ -21,7 +21,7 @@ Discrip :  function should set given pin to output
 **********************************/
 
 /**********************************
-function prototype: uint8 GPIO_SetPinDirectionAsInput(gpio_pin ,gpio_port_t)
+function prototype: uint8 GPIO_SetPinDirectionAsInput(gpio_pin_t ,gpio_port_t)
 @ret    :    int [0->GPIO_OK , -1->GPIO_NOK]
 @param  [in] gpio_pin pin number from 0 to 32
         [in] gpio_port_t port num 
@@ -55,7 +55,7 @@ Discrip : function should read the port as a whole word
 **********************************/
 
 /**********************************
-function prototype: uint8 GPIO_init()
+function prototype: void GPIO_init()
 @ret    :    int [0->GPIO_OK , -1->GPIO_NOK]
 @param  
 Discrip : function should initalize the pins to default state
