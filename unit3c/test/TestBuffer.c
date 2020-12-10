@@ -148,6 +148,50 @@ void test_Buffer_IsFull_should_workProbarlyThroughMultipleFillEmptyCycle()
     
 
 }
+
+/*********************************Buffer_IsEmpty*****************************************/
+void test_Buffer_IsEmpty_should_returnOne_when_circluarBufferIsEmptyOnly()
+{
+    //setup already reset buffer
+    TEST_ASSERT_EQUAL(1,Buffer_IsEmpty());
+}
+
+void test_Buffer_IsEmpty_should_returnZero_when_circluarBufferIsNotEmpty()
+{
+    TEST_ASSERT_EQUAL(1,Buffer_IsEmpty());
+
+    for(int i = 0 ; i < BUFFER_ELEMENTS ; i++)
+    {
+     TEST_ASSERT_EQUAL_UINT16(0,bufferWrite(i));
+     TEST_ASSERT_EQUAL(0,Buffer_IsEmpty());
+    }
+    
+}
+
+void test_Buffer_IsEmpty_should_returnZeroAfterCircluarBufferIsOneElementSizeAndReadOneElement()
+{
+    uint16_t retVal; 
+    TEST_ASSERT_EQUAL_UINT16(0,bufferWrite(10));
+    TEST_ASSERT_EQUAL(0,Buffer_IsEmpty());
+    TEST_ASSERT_EQUAL_UINT16(0,bufferRead(&retVal));
+    TEST_ASSERT_EQUAL(1,Buffer_IsEmpty());
+}
+
+void test_Buffer_IsEmpty_should_workProbarlyThroughMultipleFillEmptyCycle()
+{
+    for(int i = 0 ; i < 5 ; i++)
+    {
+        uint16_t retVal; 
+        TEST_ASSERT_EQUAL(1,Buffer_IsEmpty());   
+        bufferFill();
+        TEST_ASSERT_EQUAL(0,Buffer_IsEmpty());
+        bufferEmpty();
+        TEST_ASSERT_EQUAL(1,Buffer_IsEmpty());
+    }
+    
+
+}
+
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_bufferWrite_insertOperation_should_allowTobufferReadSuccessfully);
@@ -159,5 +203,9 @@ int main(void) {
     RUN_TEST(test_Buffer_IsFull_should_returnZero_when_circluarBufferIsNotFall);
     RUN_TEST(test_Buffer_IsFull_should_returnZeroAfterCircluarBufferIsFillAndReadOneElement);
     RUN_TEST(test_Buffer_IsFull_should_workProbarlyThroughMultipleFillEmptyCycle);
+    RUN_TEST(test_Buffer_IsEmpty_should_returnOne_when_circluarBufferIsEmptyOnly);
+    RUN_TEST(test_Buffer_IsEmpty_should_returnZero_when_circluarBufferIsNotEmpty);
+    RUN_TEST(test_Buffer_IsEmpty_should_returnZeroAfterCircluarBufferIsOneElementSizeAndReadOneElement);
+    RUN_TEST(test_Buffer_IsEmpty_should_workProbarlyThroughMultipleFillEmptyCycle);
     return UNITY_END();
 }

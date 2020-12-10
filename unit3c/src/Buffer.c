@@ -32,7 +32,10 @@ char Buffer_IsFull()
     return (nextIndx == readIndx);
 }
 
-
+char Buffer_IsEmpty()
+{
+    return (readIndx == wirteIndx );
+}
 int bufferRead(uint16 * val)
 {
     if(readIndx == wirteIndx)

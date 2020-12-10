@@ -9,5 +9,5 @@ void bufferReset();
 int bufferWrite(uint16 val);
 int bufferRead(uint16 * val);
 char Buffer_IsFull();
-
+char Buffer_IsEmpty();
 #endif //BUFFER_H
