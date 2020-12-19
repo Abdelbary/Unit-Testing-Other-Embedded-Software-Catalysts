@@ -2,6 +2,15 @@
 #include "GPIO.h"
 #include "MK20DX256.h"
 
+void setUp(void)
+{
+    GPIO_init();
+}
+
+void tearDown(void)
+{
+
+}
 /*=====================================SetPinDirectionAsOutput==========================*/
 void test_GPIO_SetPinDirectionAsOutput_should_setPinDirectionToOutput()
 {
@@ -223,6 +232,7 @@ void test_GPIO_init_should_setRegistersToInitialConfigration()
 
 int main(void) {
     UNITY_BEGIN();
+    RUN_TEST(test_GPIO_init_should_setRegistersToInitialConfigration);
     RUN_TEST(test_GPIO_SetPinDirectionAsOutput_should_setPinDirectionToOutput);
     RUN_TEST(test_GPIO_SetPinDirectionAsOutput_should_return_NOK_when_outOfRangePinPassedAsInput);
     RUN_TEST(test_GPIO_SetPinDirectionAsInput_should_setPinDirectionToInput);
@@ -234,6 +244,5 @@ int main(void) {
     RUN_TEST(test_GPIO_SetPin_should_return_NOK_when_outOfRangePinPassedAsInput);
     RUN_TEST(test_GPIO_ReadPort_should_ReturnPortValue);
     RUN_TEST(test_GPIO_ReadPort_should_return_NOK_when_outputValueIsNull);
-    RUN_TEST(test_GPIO_init_should_setRegistersToInitialConfigration);
     return UNITY_END();
 }
